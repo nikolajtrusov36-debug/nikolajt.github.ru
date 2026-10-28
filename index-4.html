@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Васильев Владислав — барбер</title>
+<meta name="description" content="Васильев Владислав — барбер. Мужские стрижки, борода, бритьё. Цены, примеры работ, запись.">
+<style>
+  :root {
+    --white: #ffffff;
+    --blue: #1d4ed8;
+    --blue-dark: #15389c;
+    --blue-soft: #eaf1ff;
+    --blue-line: #cfdcf7;
+    --text: #0f1b33;
+    --muted: #5b6b86;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  img, svg { max-width: 100%; }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background: var(--white);
+    color: var(--text);
+    font-family: Montserrat, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+  }
+  h1, h2, h3 {
+    font-family: inherit;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Кнопка ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 16px 40px;
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 6px 18px rgba(29, 78, 216, 0.25);
+  }
+  .btn:hover { background: var(--blue-dark); }
+  .btn:active { transform: translateY(1px); }
+  .btn:focus-visible { outline: 3px solid #9db8f5; outline-offset: 3px; }
+
+  /* ---------- 1. Первый экран ---------- */
+  .hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 72px 0;
+    border-top: 10px solid var(--blue);
+    background: linear-gradient(180deg, var(--blue-soft) 0%, var(--white) 100%);
+  }
+  .hero .wrap { width: 100%; }
+  .pole {
+    width: 64px; height: 8px;
+    margin: 0 auto 28px;
+    border-radius: 4px;
+    background: repeating-linear-gradient(-45deg, var(--blue) 0 6px, var(--white) 6px 12px);
+    border: 1px solid var(--blue);
+  }
+  .role {
+    margin: 0 0 18px;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 7.5vw, 3.8rem); letter-spacing: 0.1em; }
+  .hero h1 span { display: block; color: var(--blue); }
+  .offer {
+    margin: 24px auto 0;
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+  .hero .btn { margin-top: 36px; }
+
+  /* ---------- Секции ---------- */
+  section { padding: 72px 0; }
+  .alt { background: var(--blue-soft); }
+  .title { font-size: clamp(1.2rem, 4vw, 1.6rem); margin-bottom: 8px; }
+  .title::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-top: 14px;
+    background: var(--blue);
+  }
+  .center { text-align: center; }
+  .center .title::after { margin-left: auto; margin-right: auto; }
+  .lead { margin: 18px 0 0; color: var(--muted); max-width: 620px; }
+  .center .lead { margin-left: auto; margin-right: auto; }
+
+  /* ---------- 2. Выгоды ---------- */
+  .cards {
+    margin: 36px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .cards li {
+    padding: 26px 18px;
+    border: 1px solid var(--blue-line);
+    border-radius: 16px;
+    background: var(--white);
+  }
+  .cards svg { width: 34px; height: 34px; display: block; margin-bottom: 14px; }
+  .cards h3 { font-size: 0.8rem; letter-spacing: 0.1em; color: var(--blue-dark); }
+  .cards p { margin: 10px 0 0; font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+
+  /* ---------- 3. Как это работает ---------- */
+  .steps {
+    margin: 36px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .steps li {
+    counter-increment: step;
+    padding: 0 4px;
+  }
+  .steps li::before {
+    content: "0" counter(step);
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 800;
+    font-size: 2.2rem;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    line-height: 1;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--blue-line);
+  }
+  .steps h3 { font-size: 0.8rem; letter-spacing: 0.1em; }
+  .steps p { margin: 8px 0 0; font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+
+  /* ---------- 4. Работы ---------- */
+  .grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .work {
+    margin: 0;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--blue-line);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .work:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(29, 78, 216, 0.14); }
+  .work svg { display: block; width: 100%; height: auto; background: var(--blue-soft); }
+  .work figcaption {
+    padding: 14px 16px 16px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .work figcaption small {
+    display: block;
+    margin-top: 2px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Фото ---------- */
+  .photos {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .photo {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--blue-line);
+    background: var(--blue-soft);
+  }
+  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- 5. Цены ---------- */
+  .prices {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--blue-line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .prices li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--blue-line);
+  }
+  .prices li:last-child { border-bottom: 0; }
+  .prices .name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .prices .name small {
+    display: block;
+    margin-top: 2px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .prices .cost {
+    white-space: nowrap;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--blue);
+  }
+
+  /* ---------- 6. Отзывы ---------- */
+  .reviews-list {
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    text-align: left;
+  }
+  .reviews-list[hidden], .reviews-empty[hidden] { display: none; }
+  .review {
+    margin: 0;
+    padding: 24px;
+    background: var(--white);
+    border: 1px solid var(--blue-line);
+    border-radius: 16px;
+  }
+  .review p { margin: 0; color: var(--text); }
+  .review footer {
+    margin-top: 14px;
+    padding: 0;
+    border: 0;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    text-align: left;
+  }
+  .reviews-empty {
+    margin: 32px auto 0;
+    max-width: 520px;
+    padding: 26px 22px;
+    border: 1px dashed var(--blue-line);
+    border-radius: 16px;
+    background: var(--white);
+    color: var(--muted);
+  }
+
+  /* ---------- 7. Вопросы ---------- */
+  .faq { margin-top: 32px; border-top: 1px solid var(--blue-line); }
+  .faq details { border-bottom: 1px solid var(--blue-line); }
+  .faq summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 40px 20px 0;
+    position: relative;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    position: absolute;
+    right: 6px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--blue);
+    transition: transform 0.2s;
+  }
+  .faq details[open] summary::after { content: "–"; }
+  .faq summary:focus-visible { outline: 3px solid #9db8f5; outline-offset: 2px; }
+  .faq p { margin: 0 0 20px; color: var(--muted); max-width: 680px; }
+
+  /* ---------- 8. Контакты ---------- */
+  .contacts-list {
+    margin: 32px auto 0;
+    padding: 0;
+    list-style: none;
+    max-width: 520px;
+    text-align: left;
+    border: 1px solid var(--blue-line);
+    border-radius: 16px;
+    background: var(--white);
+    overflow: hidden;
+  }
+  .contacts-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--blue-line);
+  }
+  .contacts-list li:last-child { border-bottom: 0; }
+  .contacts-list span {
+    flex: 0 0 auto;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  .contacts-list b, .contacts-list a {
+    font-weight: 600;
+    text-align: right;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .contacts-list a:hover { color: var(--blue); }
+  .ph { color: #8b9ab4 !important; }
+  .contacts .btn { margin-top: 32px; }
+
+  footer.site {
+    text-align: center;
+    padding: 28px 20px;
+    border-top: 1px solid var(--blue-line);
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---------- Форма заявки ---------- */
+  .lead-form {
+    margin: 32px auto 0;
+    max-width: 520px;
+    padding: 28px 24px;
+    text-align: left;
+    background: var(--white);
+    border: 1px solid var(--blue-line);
+    border-radius: 16px;
+  }
+  .lead-form h3 { font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 20px; }
+  .lead-form label {
+    display: block;
+    margin: 0 0 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .lead-form input[type="text"] {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid var(--blue-line);
+    border-radius: 12px;
+  }
+  .lead-form input[type="text"]:focus { outline: 3px solid #9db8f5; outline-offset: 1px; border-color: var(--blue); }
+  .lead-form input[aria-invalid="true"] { border-color: #b42318; }
+  .lead-form button.btn { width: 100%; margin-top: 0; border: 0; cursor: pointer; }
+  .lead-form button.btn:disabled { opacity: 0.7; cursor: default; }
+  .lead-form input.hp[type="text"] { position: absolute; width: 1px; height: 1px; min-height: 0; margin: 0; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .form-msg {
+    margin: 0;
+    padding: 18px;
+    border-radius: 12px;
+    background: var(--blue-soft);
+    color: var(--blue-dark);
+    font-weight: 700;
+    text-align: center;
+  }
+  .form-msg.error { margin-top: 16px; background: #fdecea; color: #b42318; }
+
+  /* ---------- Планшет и телефон ---------- */
+  @media (max-width: 860px) {
+    .cards, .steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .photos { gap: 12px; }
+    .reviews-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .hero { min-height: 80vh; padding: 56px 0; }
+    section { padding: 52px 0; }
+    .cards, .steps { grid-template-columns: 1fr; }
+    .btn { width: 100%; text-align: center; padding: 16px 20px; }
+    .work figcaption { padding: 12px; font-size: 0.7rem; }
+    .work figcaption small { font-size: 0.78rem; }
+    .prices li { padding: 16px; gap: 12px; }
+    .prices .name { font-size: 0.8rem; }
+    .contacts-list li { padding: 14px 16px; }
+    .lead-form { padding: 22px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Общая «голова» для иллюстраций -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="head">
+      <path d="M62 150 Q100 176 138 150 L170 190 H30Z" fill="#fff" stroke="#1d4ed8" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="84" y="150" width="32" height="22" fill="#fff" stroke="#1d4ed8" stroke-width="3"/>
+      <ellipse cx="58" cy="108" rx="7" ry="12" fill="#fff" stroke="#1d4ed8" stroke-width="3"/>
+      <ellipse cx="142" cy="108" rx="7" ry="12" fill="#fff" stroke="#1d4ed8" stroke-width="3"/>
+      <path d="M60 92 Q60 50 100 50 Q140 50 140 92 L140 114 Q140 158 100 166 Q60 158 60 114Z" fill="#fff" stroke="#1d4ed8" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="86" cy="108" r="3.2" fill="#1d4ed8"/>
+      <circle cx="114" cy="108" r="3.2" fill="#1d4ed8"/>
+      <path d="M92 138 Q100 143 108 138" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ======== 1. Первый экран: оффер и кнопка ======== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="pole" aria-hidden="true"></div>
+    <p class="role">Барбер</p>
+    <h1>Васильев <span>Владислав</span></h1>
+    <p class="offer">Мужские стрижки и борода с чистой линией и формой, которая подходит именно вам.</p>
+    <a class="btn js-book" href="#contacts">Записаться</a>
+  </div>
+</header>
+
+<main>
+  <!-- ======== 2. Выгоды ======== -->
+  <section id="benefits">
+    <div class="wrap">
+      <h2 class="title">Что вы получите</h2>
+      <ul class="cards">
+        <li>
+          <svg viewBox="0 0 36 36" fill="none" stroke="#1d4ed8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="12" r="6"/><path d="M5 32 Q5 21 18 21 Q31 21 31 32"/></svg>
+          <h3>Форма, которая вам идёт</h3>
+          <p>Учитываю черты лица, структуру волос и ваш образ жизни.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 36 36" fill="none" stroke="#1d4ed8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="13"/><path d="M18 10 V18 L24 22"/></svg>
+          <h3>Продуманные детали</h3>
+          <p>Работаю в спокойном темпе и не сокращаю время на детали.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 36 36" fill="none" stroke="#1d4ed8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="13"/><path d="M11 18.5 L16 23.5 L25.5 13"/></svg>
+          <h3>Чёткий контур</h3>
+          <p>Аккуратный контур, ровные переходы и финальная проверка.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 36 36" fill="none" stroke="#1d4ed8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10 H31 V17 H5Z"/><path d="M9 17 V28 M14.5 17 V28 M20 17 V28 M25.5 17 V28"/></svg>
+          <h3>Стрижка держит форму</h3>
+          <p>Покажу, как укладывать, чтобы результат держался до следующего визита.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== 3. Как это работает ======== -->
+  <section class="alt" id="how">
+    <div class="wrap">
+      <h2 class="title">Свежий образ без хлопот</h2>
+      <ol class="steps">
+        <li>
+          <h3>Удобное время для вас</h3>
+          <p>Выбираете удобное время и записываетесь любым способом из блока «Контакты».</p>
+        </li>
+        <li>
+          <h3>Понятный результат заранее</h3>
+          <p>Обсуждаем, что вы хотите, и подбираем форму и длину.</p>
+        </li>
+        <li>
+          <h3>Форма, которую вы хотели</h3>
+          <p>Работаю над стрижкой, бородой или бритьём, без спешки.</p>
+        </li>
+        <li>
+          <h3>Образ, который легко поддерживать</h3>
+          <p>Делаю укладку и рассказываю, как поддерживать форму дома.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ======== 4. Примеры работ ======== -->
+  <section id="works">
+    <div class="wrap">
+      <h2 class="title">Так выглядит результат</h2>
+
+      <div class="photos">
+        <figure class="photo">
+          <img src="images/service-2.jpg" alt="Пример услуги барбера Владислава Васильева, фото 1" loading="lazy">
+        </figure>
+        <figure class="photo">
+          <img src="images/service-1.jpg" alt="Пример услуги барбера Владислава Васильева, фото 2" loading="lazy">
+        </figure>
+        <figure class="photo">
+          <img src="images/service-3.jpg" alt="Пример услуги барбера Владислава Васильева, фото 3" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="grid">
+
+        <figure class="work">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Классическая стрижка с боковым пробором">
+            <use href="#head"/>
+            <path d="M58 100 Q50 38 100 38 Q152 38 142 100 Q140 74 118 66 Q92 72 64 76 Q60 84 58 100Z" fill="#1d4ed8"/>
+            <path d="M94 46 Q102 62 118 66" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <figcaption>Классика<small>Боковой пробор, аккуратный контур</small></figcaption>
+        </figure>
+
+        <figure class="work">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Фейд с плавным переходом">
+            <use href="#head"/>
+            <path d="M62 94 Q60 50 100 48 Q140 50 138 94 Q132 70 100 68 Q68 70 62 94Z" fill="#1d4ed8"/>
+            <g stroke="#1d4ed8" stroke-linecap="round" stroke-width="4">
+              <path d="M62 98 V116" opacity=".35"/><path d="M66 94 V108" opacity=".65"/>
+              <path d="M138 98 V116" opacity=".35"/><path d="M134 94 V108" opacity=".65"/>
+            </g>
+          </svg>
+          <figcaption>Фейд<small>Плавный переход от кожи до длины</small></figcaption>
+        </figure>
+
+        <figure class="work">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Короткая стрижка и ухоженная борода">
+            <use href="#head"/>
+            <path d="M62 94 Q60 50 100 48 Q140 50 138 94 Q132 70 100 68 Q68 70 62 94Z" fill="#1d4ed8"/>
+            <path d="M60 116 Q62 170 100 178 Q138 170 140 116 Q132 142 100 144 Q68 142 60 116Z" fill="#1d4ed8"/>
+            <path d="M92 140 Q100 146 108 140" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <figcaption>Борода<small>Форма, контур и уход</small></figcaption>
+        </figure>
+
+        <figure class="work">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Опасная бритва">
+            <g transform="rotate(-22 100 104)">
+              <polygon points="42,92 132,92 142,100 42,108" fill="#fff" stroke="#1d4ed8" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M52 100 H128" stroke="#9db8f5" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="134" cy="100" r="5" fill="#1d4ed8"/>
+              <rect x="132" y="93" width="58" height="14" rx="7" fill="#1d4ed8"/>
+            </g>
+            <g fill="#fff" stroke="#1d4ed8" stroke-width="2.5">
+              <circle cx="58" cy="150" r="10"/><circle cx="84" cy="164" r="7"/><circle cx="40" cy="168" r="6"/>
+            </g>
+          </svg>
+          <figcaption>Королевское бритьё<small>Опасная бритва и горячее полотенце</small></figcaption>
+        </figure>
+
+        <figure class="work">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Стрижка с объёмом и укладкой наверх">
+            <use href="#head"/>
+            <path d="M58 100 Q42 36 92 26 Q152 20 148 70 Q147 90 142 100 Q138 68 116 62 Q88 58 64 78 Q60 86 58 100Z" fill="#1d4ed8"/>
+            <path d="M84 36 Q110 28 134 44" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+          </svg>
+          <figcaption>Объём и укладка<small>Текстура и фиксация на каждый день</small></figcaption>
+        </figure>
+
+        <figure class="work">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Короткая стрижка под машинку">
+            <use href="#head"/>
+            <path d="M61 92 Q59 54 100 52 Q141 54 139 92 Q130 76 100 74 Q70 76 61 92Z" fill="#1d4ed8" opacity=".55"/>
+          </svg>
+          <figcaption>Короткая<small>Под машинку, чисто и практично</small></figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 5. Цены ======== -->
+  <!-- ВНИМАНИЕ: впишите реальные цены вместо [___]. -->
+  <section class="alt" id="prices">
+    <div class="wrap">
+      <h2 class="title">Понятная стоимость</h2>
+      <ul class="prices">
+        <li>
+          <span class="name">Мужская стрижка<small>Консультация, стрижка, укладка</small></span>
+          <span class="cost">[___]</span>
+        </li>
+        <li>
+          <span class="name">Стрижка и борода<small>Комплекс: волосы и борода</small></span>
+          <span class="cost">[___]</span>
+        </li>
+        <li>
+          <span class="name">Оформление бороды<small>Форма, контур, уход</small></span>
+          <span class="cost">[___]</span>
+        </li>
+        <li>
+          <span class="name">Королевское бритьё<small>Опасная бритва, горячее полотенце</small></span>
+          <span class="cost">[___]</span>
+        </li>
+        <li>
+          <span class="name">Короткая стрижка<small>Под машинку</small></span>
+          <span class="cost">[___]</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== 6. Отзывы (только настоящие) ======== -->
+  <section class="center" id="reviews">
+    <div class="wrap">
+      <h2 class="title">Что говорят клиенты</h2>
+      <div class="reviews-list" id="reviewsList" hidden></div>
+      <p class="reviews-empty" id="reviewsEmpty">Здесь появятся отзывы клиентов. А пока посмотрите примеры работ выше или запишитесь и оцените всё сами.</p>
+    </div>
+  </section>
+
+  <!-- ======== 7. Частые вопросы ======== -->
+  <!-- ВНИМАНИЕ: ответы — общие, поправьте под свои правила. -->
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <h2 class="title">Всё, что нужно знать перед визитом</h2>
+      <div class="faq">
+        <details>
+          <summary>Как записаться?</summary>
+          <p>Нажмите «Записаться» или выберите удобный способ связи в блоке «Контакты». Напишите, какая услуга нужна, и мы подберём время.</p>
+        </details>
+        <details>
+          <summary>Что делать, если нужно перенести запись?</summary>
+          <p>Сообщите заранее любым удобным способом, и мы подберём новое время.</p>
+        </details>
+        <details>
+          <summary>Нужно ли приходить с помытой головой?</summary>
+          <p>Нет, приходите как удобно. Перед стрижкой при необходимости волосы будут вымыты.</p>
+        </details>
+        <details>
+          <summary>Можно ли выбрать стрижку по фото?</summary>
+          <p>Да, покажите референс на консультации. Скажу честно, подойдёт ли такая форма вам и как её поддерживать.</p>
+        </details>
+        <details>
+          <summary>Как оплатить услугу?</summary>
+          <p>Способы оплаты уточняйте при записи.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 8. Контакты ======== -->
+  <!-- ВНИМАНИЕ: заполните CONFIG в скрипте ниже. Значения [___] — заглушки. -->
+  <section class="center contacts" id="contacts">
+    <div class="wrap">
+      <h2 class="title">Запишитесь на свежий образ</h2>
+      <p class="lead">Запишитесь на удобное время, и я подтвержу запись.</p>
+      <ul class="contacts-list">
+        <li><span>Телефон</span><a id="cPhone" class="ph" href="#contacts">[___]</a></li>
+        <li><span>Telegram</span><a id="cTg" class="ph" href="#contacts">[___]</a></li>
+        <li><span>Адрес</span><b id="cAddr" class="ph">[___]</b></li>
+        <li><span>Часы работы</span><b id="cHours" class="ph">[___]</b></li>
+      </ul>
+
+      <!-- Форма заявки. Адрес в action — заглушка: замените на свой endpoint Formspree. -->
+      <form class="lead-form" id="leadForm" action="https://formspree.io/f/myeewoda" method="POST" novalidate>
+        <h3>Оставьте контакт, и мы подберём время</h3>
+        <div id="leadFields">
+          <label for="fName">Имя</label>
+          <input id="fName" name="name" type="text" autocomplete="name" required>
+
+          <label for="fContact">Телефон или Telegram</label>
+          <input id="fContact" name="contact" type="text" autocomplete="off" required>
+
+          <!-- Скрытое поле-ловушка для ботов -->
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn" id="leadBtn" type="submit">Отправить</button>
+        </div>
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <a class="btn js-book" href="#contacts">Записаться</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  © <span id="year">2026</span> Васильев Владислав · Барбер
+</footer>
+
+<script>
+  // ---------- НАСТРОЙКИ: заполните своими данными ----------
+  var CONFIG = {
+    phone: "",      // номер телефона
+    telegram: "",   // ник в Telegram
+    address: "",    // адрес
+    hours: ""       // часы работы
+  };
+
+  // Отзывы: добавляйте ТОЛЬКО настоящие, с разрешения клиентов.
+  // Пример: { name: "Алексей", text: "Текст отзыва" }
+  var REVIEWS = [];
+  // ---------------------------------------------------------
+
+  (function () {
+    function fill(id, value, href) {
+      var el = document.getElementById(id);
+      if (!value) return;
+      el.textContent = value;
+      el.classList.remove("ph");
+      if (href) el.setAttribute("href", href);
+    }
+
+    var phoneDigits = CONFIG.phone.replace(/[^\d+]/g, "");
+    var tgName = CONFIG.telegram.replace(/^@/, "").trim();
+    var tgHref = tgName ? "https://t.me/" + tgName : "";
+
+    fill("cPhone", CONFIG.phone, phoneDigits ? "tel:" + phoneDigits : "");
+    fill("cTg", CONFIG.telegram, tgHref);
+    fill("cAddr", CONFIG.address);
+    fill("cHours", CONFIG.hours);
+
+    // Куда ведёт «Записаться»: Telegram, затем телефон, иначе к блоку контактов
+    var book = tgHref || (phoneDigits ? "tel:" + phoneDigits : "#contacts");
+    var btns = document.querySelectorAll(".js-book");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("href", book);
+      if (book.indexOf("http") === 0) { btns[i].setAttribute("target", "_blank"); btns[i].setAttribute("rel", "noopener"); }
+    }
+
+    // Отзывы
+    if (REVIEWS.length) {
+      var list = document.getElementById("reviewsList");
+      for (var r = 0; r < REVIEWS.length; r++) {
+        var fig = document.createElement("blockquote");
+        fig.className = "review";
+        var p = document.createElement("p");
+        p.textContent = "«" + REVIEWS[r].text + "»";
+        var f = document.createElement("footer");
+        f.textContent = REVIEWS[r].name;
+        fig.appendChild(p);
+        fig.appendChild(f);
+        list.appendChild(fig);
+      }
+      list.hidden = false;
+      document.getElementById("reviewsEmpty").hidden = true;
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
+
+  // Форма заявки
+  (function () {
+    var form = document.getElementById("leadForm");
+    var fields = document.getElementById("leadFields");
+    var msg = document.getElementById("formMsg");
+    var btn = document.getElementById("leadBtn");
+    var inputs = [document.getElementById("fName"), document.getElementById("fContact")];
+
+    function showMsg(text, isError) {
+      msg.textContent = text;
+      msg.className = "form-msg" + (isError ? " error" : "");
+      msg.hidden = false;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var firstBad = null;
+      for (var i = 0; i < inputs.length; i++) {
+        var bad = !inputs[i].value.trim();
+        inputs[i].setAttribute("aria-invalid", bad ? "true" : "false");
+        if (bad && !firstBad) firstBad = inputs[i];
+      }
+      if (firstBad) {
+        showMsg("Заполните оба поля", true);
+        firstBad.focus();
+        return;
+      }
+
+      msg.hidden = true;
+      btn.disabled = true;
+      btn.textContent = "Отправляем…";
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      }).then(function (res) {
+        if (!res.ok) throw new Error("bad status");
+        fields.hidden = true;
+        showMsg("Спасибо, мы свяжемся с вами", false);
+        form.reset();
+      }).catch(function () {
+        showMsg("Не удалось отправить. Попробуйте ещё раз.", true);
+        btn.disabled = false;
+        btn.textContent = "Отправить";
+      });
+    });
+  })();
+</script>
+</body>
+</html>
